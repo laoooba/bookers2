@@ -11,8 +11,9 @@
     <% @books.each do |book| %>
     <tbody>
     <tr>
-
-      <td><p>プロフィール画像</p></td>
+      <td><% if @user.id == current_user.id %>
+      <p><%= link_to "プロフィール画像", edit_user_path(@user) %></p>
+      <% end %></td>
        <td><%= link_to book.title, book_path(book.id) %></td>
 
       <td><%= book.body %></td>
