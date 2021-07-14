@@ -1,0 +1,10 @@
+<h1>Book detail</h1>
+<table>
+  <tr>
+    <tb><p>プロフィール</p></tb>
+    <tb><%= link_to @book.title,book_path(@book.id) %></tb>
+    <tb><%= @book.body %></tb>
+    <tb><%= link_to 'Edit', edit_book_path(@book.id) %></tb>
+    <tb><%= link_to 'Destroy', book_path(@book.id), method: :delete %></tb>
+  </tr>
+</table>
