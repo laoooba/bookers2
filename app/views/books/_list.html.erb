@@ -1,0 +1,34 @@
+<h1>Books</h1>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinoin</th>
+      </tr>
+    </thead>
+    
+    <% @books.each do |book| %>
+    <tbody>
+    <tr>
+      <td><p>プロフィール画像</p></td>
+      
+      <td><%= link_to book.title, book_path(book.id) %></td>
+      
+      <td><%= book.body %></td>
+    </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      
+    </div>
+  </div>
+</div>
