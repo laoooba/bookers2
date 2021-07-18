@@ -2,6 +2,18 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>User info</h1>
+      <div class="error_explanation">
+        <% if @user.errors.any? %>
+        <div class="alert">
+          <h1><%= @user.errors.count %>errors prohibited this obj from being saved:</h1>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      </div>
       <%= form_with model:@user, local:true do |f| %>
       <div class="form-group">
         <label for="inputName">Name</label>
