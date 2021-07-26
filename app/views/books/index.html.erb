@@ -24,21 +24,7 @@
                 <th></th>
                 <th>Title</th>
                 <th>Opinoin</th>
-                <th>
-                  <% if @book.favorited_by?(current_user) %>
-                    <p>
-                      <%= link_to book_favorites_path(@book), method: :delete do %>
-                        ♥<%= @book.favorites.count %> いいね
-                      <% end %>
-                    </p>
-                    <% else %>
-                    <p>
-                      <%= link_to book_favorites_path(@book), method: :post do %>
-                        ♡<%= @book.favorites.count %> いいね
-                      <% end %>
-                    </p>
-                  <% end %>
-                </th>
+                <th></th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -54,6 +40,22 @@
               <td><%= link_to book.title, book_path(book.id) %></td>
 
               <td><%= book.body %></td>
+              <td>
+                <% if book.favorited_by?(current_user) %>
+                    <p>
+                      <%= link_to book_favorite_path(book.id, @user.id), method: :delete do %>
+                        ♥<%= book.favorites.count %>
+                      <% end %>
+                    </p>
+                    <% else %>
+                    <p>
+                      <%= link_to book_favorites_path(book), method: :post do %>
+                        ♡<%= book.favorites.count %>
+                      <% end %>
+                    </p>
+                  <% end %>
+              </td>
+              <td> <p><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></p></td>
             </tr>
             </tbody>
             <% end %>
