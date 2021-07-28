@@ -12,6 +12,11 @@
             <th>introduction</th>
             <th><%= user.introduction %></th>
           </tr>
+          <tr>
+            <th>
+              <%= render 'shared/status', user: @user %>
+            </th>
+          </tr>
         </tbody>
       </table>
 
