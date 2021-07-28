@@ -11,26 +11,28 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent: :destroy
-
-  has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
-
-
+  
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
+  
   def follow(other_user)
-    following << other_user
-  end
-  def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
   end
 
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
 
   def following?(other_user)
-    following.include?(other_user)
+    self.followings.include?(other_user)
   end
 
+ 
 
   attachment :profile_image
 end

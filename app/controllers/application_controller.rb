@@ -3,6 +3,24 @@ class ApplicationController < ActionController::Base
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+
+    render 'show_follow'
+  end
+
+
+
     def after_sign_in_path_for(resource)
     books_path
     end
