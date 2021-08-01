@@ -16,8 +16,12 @@ resources :users, only:[:index, :show, :edit, :update]do
   member do
       get :following, :followers
     end
-end 
+end
 resources :relationships, only: [:create, :destroy]
+
+get '/search', to: 'searches#search'
+
+
 
 
 end
