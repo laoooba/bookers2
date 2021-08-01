@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
     @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following
-    render 'show_follow'
+   redirect_back(fallback_location: root_path)
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers
-    render 'show_follow'
+    redirect_back(fallback_location: root_path)
   end
 
 
