@@ -21,7 +21,7 @@
               <td><%= @book.body %></td>
              <!--いいね-->
               <td>
-                <div class="favorite-btn">
+                <div class="favorite-btn_<%= @book.id %>">
                   <%= render 'favorites/favorite-btn', book: @book %>
                 </div>
               </td>
