@@ -24,7 +24,6 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
     
-  
 
   def follow(other_user)
     followings << other_user
@@ -38,6 +37,9 @@ class User < ApplicationRecord
   def following?(other_user)
     followings.include?(other_user)
   end
+  
+
+ 
 
   attachment :profile_image
 end
