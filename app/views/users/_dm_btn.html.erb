@@ -1,7 +1,7 @@
 <% unless user.id == current_user.id %>
   <% if (current_user.following? user) && (user.following? current_user) %>
   <% if isRoom == true %>
-    <p class = "user-show-room"><%= link_to "チャットへ", "rooms_path", roomID, class: "btn-btn-primary" %></p>
+    <%= link_to "チャットへ", room_path(roomID), class: "btn btn-primary" %>
   <% else %>
     <%= form_with url: rooms_path, model: room, local:true do |f| %>
       <%= f.fields_for :entry do |e| %>
