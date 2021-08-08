@@ -21,6 +21,10 @@ resources :relationships, only: [:create, :destroy]
 
 get '/search', to: 'searches#search'
 
+# DM機能
+resources :messages, only: [:create]
+resources :rooms, only: [:create, :show]
+
 
 
 

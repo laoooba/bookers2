@@ -25,6 +25,7 @@
       </div>
       <br>
       <%= render 'users/follow_form',  user: @user  %>
+      <%= render 'users/dm_btn', user: @user, isRoom: @isRoom, roomID: @roomID, room: @room, entry: @entry %>
 
       <h1 class="mt-3">New book</h1>
       <%= form_with model: book, local:true do |f| %>

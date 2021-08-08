@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def following
     @title = "Following"
     @user  = User.find(params[:id])
-    @users = @user.following
+    @users = @user.followings
    redirect_back(fallback_location: root_path)
   end
 
