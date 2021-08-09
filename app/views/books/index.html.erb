@@ -25,6 +25,7 @@
                 <th>Title</th>
                 <th>Opinoin</th>
                 <th></th>
+                <th></th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -46,12 +47,76 @@
                 </div>
               </td>
               <td> <p><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></p></td>
+              <td><p><%= "#{book.impressions_count} PV" %></p></td>
 
             </tr>
             </tbody>
             <% end %>
           </table>
         </div>
+
+
+        <h1>投稿数の前日比・前週比</h1>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>今日の投稿数</th>
+              <th>前日の投稿数</th>
+              <th>前日比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @book_today.count %></td>
+              <td><%= @book_yesterday.count %></td>
+              <td><%= "#{@todays}%" %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>今週の投稿数</th>
+              <th>先週の投稿数</th>
+              <th>前週比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @book_week.count %></td>
+              <td><%= @book_last_week.count %></td>
+              <td><%= "#{@weeks.to_i}%" %></td>
+            </tr>
+          </tbody>
+        </table>
+         <h1>7日間分の投稿数</h1>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>６日前</th>
+              <th>５日前</th>
+              <th>４日前</th>
+              <th>３日前</th>
+              <th>２日前</th>
+              <th>１日前</th>
+              <th>今日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @book_6.count %></td>
+              <td><%= @book_5.count %></td>
+              <td><%= @book_4.count %></td>
+              <td><%= @book_3.count %></td>
+              <td><%= @book_2.count %></td>
+              <td><%= @book_yesterday.count  %></td>
+              <td><%= @book_today.count %></td>
+            </tr>
+          </tbody>
+        </table>
+
+
     </div>
   </div>
 </div>

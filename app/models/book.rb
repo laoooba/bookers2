@@ -9,6 +9,11 @@ class Book < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
   has_many :book_comments, dependent: :destroy
   
+  # pv数
+  is_impressionable counter_cache: true
+  
+
+  
   
 
   def favorited_by?(user)

@@ -19,6 +19,31 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     @user = current_user
+    # 投稿回数
+    @book_today = Book.where(created_at: Date.today.all_day)
+    @book_yesterday = Book.where(created_at: 1.day.ago.all_day)
+    @book_2 = Book.where(created_at: 2.day.ago.all_day)
+    @book_3 = Book.where(created_at: 3.day.ago.all_day)
+    @book_4 = Book.where(created_at: 4.day.ago.all_day)
+    @book_5 = Book.where(created_at: 5.day.ago.all_day)
+    @book_6 = Book.where(created_at: 6.day.ago.all_day)
+   
+    
+    
+    @book_week = Book.where(created_at: Date.today.all_week)
+    @book_last_week =Book.where(created_at: 7.day.ago.all_week)
+
+    if @book_yesterday.count == 0
+      @todays = 0
+    else
+      @todays = @book_today.count / @book_yesterday.count.to_f * 100
+    end
+
+    if @book_last_week.count == 0
+      @weeks = 0
+    else
+      @weeks = @book_week.count / @book_last_week.count.to_f * 100
+    end
   end
 
   def show
@@ -26,6 +51,11 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @book_comment = BookComment.new
+    impressionist(@book, nil, unique: [:ip_address])
+    
+    
+    
+    
   end
 
   def edit
