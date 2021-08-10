@@ -103,7 +103,7 @@
               <th>今日</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="text-center">
             <tr>
               <td><%= @book_6.count %></td>
               <td><%= @book_5.count %></td>
@@ -115,6 +115,8 @@
             </tr>
           </tbody>
         </table>
+        <%= line_chart Book.group_by_day(:created_at, last:7).count  %>
+
 
 
     </div>

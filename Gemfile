@@ -68,3 +68,6 @@ gem "refile-mini_magick"
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'impressionist', '~>1.6.1'
+gem 'chartkick'
+gem 'groupdate'
+

@@ -44,6 +44,7 @@ class BooksController < ApplicationController
     else
       @weeks = @book_week.count / @book_last_week.count.to_f * 100
     end
+    
   end
 
   def show
