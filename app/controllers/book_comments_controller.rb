@@ -8,7 +8,6 @@ class BookCommentsController < ApplicationController
     comment.book_id = book.id
     comment.save
     render :index
-
   end
 
   def destroy
